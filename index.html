@@ -94,16 +94,15 @@
 /* Portrait Container */
 .portrait {
   position: relative;
-  width: 90%;          /* flexible size */
-  max-width: 300px;    /* limit size on mobile */
-  aspect-ratio: 1/1;   /* keep circle */
+  width: 80vw;          /* scales with screen width */
+  max-width: 280px;     /* limit on desktop */
+  aspect-ratio: 1/1;    /* keep it circular */
   margin: auto;
   border-radius: 50%;
   overflow: hidden;
   display: flex;
   align-items: center;
   justify-content: center;
-  background: none !important;
   z-index: 2;
 }
 
@@ -115,20 +114,31 @@
   border-radius: 50%;
 }
 
-/* Logo / Moon Background */
+/* Logo/Moon */
 .moon {
   position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  width: 90%;
-  max-width: 300px;
+  top: 50%;                /* center vertically */
+  left: 50%;               /* center horizontally */
+  transform: translate(-50%, -50%); /* true center */
+  width: 80vw;             /* responsive size */
+  max-width: 280px;        /* shrink on small screens */
   aspect-ratio: 1/1;
   border-radius: 50%;
   background: url("Logo.jpg") no-repeat center center/cover;
   z-index: 1;
   box-shadow: 0 20px 40px rgba(200, 10, 10, 0.2) inset;
 }
+
+/* Responsive tweaks */
+@media (max-width: 768px) {
+  .portrait {
+    max-width: 220px;
+  }
+  .moon {
+    max-width: 220px;
+  }
+}
+
 
 /* Responsive tweaks */
 @media (max-width: 768px) {
