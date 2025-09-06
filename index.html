@@ -5,100 +5,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Rg_Dev's Custom Profile</title>
 
-  <!-- Google Fonts (change if you want) -->
+  <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
 
   <style>
-    /* ===============================
-   GLOBAL RESPONSIVENESS
-================================= */
-
-/* Make all images responsive */
-img {
-  max-width: 100%;
-  height: auto;
-}
-
-/* Container setup */
-.container {
-  display: flex;
-  flex-wrap: wrap; /* allows items to drop below each other on small screens */
-  justify-content: center;
-  align-items: center;
-  gap: 20px;
-  padding: 20px;
-}
-
-/* Left (logo/portrait) and right (text) columns */
-.left, .right {
-  flex: 1;
-  min-width: 280px;   /* ensures it never shrinks too much */
-  max-width: 600px;   /* keeps things readable */
-  text-align: center;
-}
-
-/* Typography scaling */
-h1, h2, h3, p {
-  word-wrap: break-word;
-  line-height: 1.4;
-}
-
-/* Navbar */
-nav ul {
-  display: flex;
-  flex-wrap: wrap; /* prevent overflow */
-  justify-content: center;
-  gap: 12px;
-  padding: 0;
-  margin: 0;
-  list-style: none;
-}
-
-nav ul li a {
-  padding: 8px 14px;
-  display: block;
-}
-
-/* ===============================
-   MEDIA QUERIES
-================================= */
-
-/* Tablets */
-@media (max-width: 1024px) {
-  .container {
-    flex-direction: column;
-    text-align: center;
-  }
-
-  .portrait {
-    max-width: 250px;
-  }
-}
-
-/* Mobile phones */
-@media (max-width: 600px) {
-  h1 {
-    font-size: 1.6rem;
-  }
-
-  p {
-    font-size: 1rem;
-  }
-
-  .portrait, .moon {
-    max-width: 200px;
-  }
-
-  nav ul {
-    flex-direction: column;
-    gap: 8px;
-  }
-}
-
     :root{
       --bg:#0b0b0b;
       --card:#0f0f10;
-      --accent:#e64b4b;        /* red */
+      --accent:#e64b4b;
       --muted:#c9c6c6;
       --glass: rgba(255,255,255,0.03);
       --radius:28px;
@@ -122,7 +36,7 @@ nav ul li a {
       -moz-osx-font-smoothing:grayscale;
     }
 
-    /* Outer rounded card */
+    /* Card */
     .card{
       width:100%;
       max-width:var(--maxw);
@@ -137,8 +51,6 @@ nav ul li a {
       position:relative;
       overflow:hidden;
     }
-
-    /* subtle red mist on edges */
     .card::before{
       content:"";
       position:absolute;
@@ -150,7 +62,7 @@ nav ul li a {
       border-radius:var(--radius);
     }
 
-    /* Navigation top */
+    /* Navbar */
     .nav{
       position:absolute;
       left:44px;
@@ -167,111 +79,59 @@ nav ul li a {
     .menu a.active{color:var(--accent); border-bottom:2px solid rgba(230,75,75,0.18)}
     .menu a:hover{color:var(--accent)}
 
-    /* left portrait */
+    /* Layout */
     .left{
-      flex:0 0 380px;
+      flex:0 0 auto;
       display:flex;
       align-items:center;
       justify-content:center;
-      height:420px;
-      z-index:2;
       position:relative;
+      z-index:2;
     }
-/* Portrait Container */
-.portrait {
-  position: relative;
-  width: 80vw;          /* scales with screen width */
-  max-width: 280px;     /* limit on desktop */
-  aspect-ratio: 1/1;    /* keep it circular */
-  margin: auto;
-  border-radius: 50%;
-  overflow: hidden;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 2;
-}
 
-/* Portrait Image */
-.portrait img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  border-radius: 50%;
-}
+    /* Portrait Container */
+    .portrait {
+      position: relative;
+      width: 80vw;
+      max-width: 280px;
+      aspect-ratio: 1/1;
+      border-radius: 50%;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 2;
+    }
 
-/* Logo/Moon */
-.moon {
-  position: absolute;
-  top: 50%;                /* center vertically */
-  left: 50%;               /* center horizontally */
-  transform: translate(-50%, -50%); /* true center */
-  width: 80vw;             /* responsive size */
-  max-width: 280px;        /* shrink on small screens */
-  aspect-ratio: 1/1;
-  border-radius: 50%;
-  background: url("Logo.jpg") no-repeat center center/cover;
-  z-index: 1;
-  box-shadow: 0 20px 40px rgba(200, 10, 10, 0.2) inset;
-}
+    /* Portrait Image */
+    .portrait img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain; /* never cut off logo */
+      border-radius: 50%;
+    }
 
-/* Responsive tweaks */
-@media (max-width: 768px) {
-  .portrait {
-    max-width: 220px;
-  }
-  .moon {
-    max-width: 220px;
-  }
-}
+    /* Decorative moon background */
+    .moon {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 80vw;
+      max-width: 280px;
+      aspect-ratio: 1/1;
+      border-radius: 50%;
+      background: url("Logo.jpg") no-repeat center center/contain;
+      z-index: 1;
+      box-shadow: 0 20px 40px rgba(200, 10, 10, 0.2) inset;
+    }
 
-
-/* Responsive tweaks */
-@media (max-width: 768px) {
-  .container {
-    flex-direction: column;   /* stack logo and text vertically */
-    text-align: center;
-  }
-
-  .left, .right {
-    width: 100%;
-  }
-
-  nav ul {
-    flex-wrap: wrap;          /* so navbar doesn’t overflow */
-    justify-content: center;
-  }
-}
-
-
-/* Red moon turned into image background */
-.moon {
-  position: absolute;
-  left: 36px;
-  top: 24px;
-  width: 380px;
-  height: 380px;
-  border-radius: 50%;
-  background: url("Logo.jpg") no-repeat center center/cover; /* ⬅️ use your logo */
-  z-index: 1;
-  box-shadow: 0 40px 80px rgba(200, 10, 10, 0.18) inset;
-}
-
-
-    /* right content */
+    /* Right column */
     .right{
       flex:1;
-      padding-right:36px;
       z-index:3;
     }
-
-    .intro{
-      display:flex;
-      flex-direction:column;
-      gap:14px;
-      max-width:700px;
-    }
-
+    .intro{display:flex; flex-direction:column; gap:14px; max-width:700px}
     .greeting{
       font-family:"Poppins",sans-serif;
       font-size:42px;
@@ -282,7 +142,6 @@ nav ul li a {
       align-items:baseline;
       gap:10px;
     }
-
     .greeting .name{ color:var(--accent); margin-left:6px }
     .role{
       font-size:28px;
@@ -293,100 +152,32 @@ nav ul li a {
       gap:10px;
       font-family:"Poppins",sans-serif;
     }
-
-    .typing{
-      display:inline-block;
-      min-width:200px;
-      position:relative;
-      white-space:nowrap;
-      overflow:hidden;
-      padding-right:8px;
-    }
-    .caret{
-      width:2px;
-      height:28px;
-      background:var(--accent);
-      display:inline-block;
-      margin-left:6px;
-      animation: blink 1s steps(1) infinite;
-      vertical-align:middle;
-    }
+    .typing{display:inline-block; min-width:200px; position:relative; white-space:nowrap; overflow:hidden; padding-right:8px;}
+    .caret{width:2px; height:28px; background:var(--accent); display:inline-block; margin-left:6px; animation: blink 1s steps(1) infinite; vertical-align:middle;}
     @keyframes blink{ 50%{opacity:0} }
 
-    .desc{
-      color:var(--muted);
-      line-height:1.6;
-      font-size:14px;
-      max-width:640px;
-      margin-top:6px;
-    }
+    .desc{color:var(--muted); line-height:1.6; font-size:14px; max-width:640px; margin-top:6px;}
 
-    /* icons & buttons */
-    .controls{
-      margin-top:18px;
-      display:flex;
-      align-items:center;
-      gap:18px;
-    }
-
+    /* Buttons */
+    .controls{margin-top:18px; display:flex; align-items:center; gap:18px;}
     .socials{display:flex; gap:12px; align-items:center}
-    .sbtn{
-      width:44px;
-      height:44px;
-      display:inline-grid;
-      place-items:center;
-      border-radius:12px;
-      border:1px solid rgba(255,255,255,0.03);
-      background:linear-gradient(180deg, rgba(255,255,255,0.01), transparent);
-      color:var(--accent);
-      font-weight:700;
-      cursor:pointer;
-      transition:transform .18s ease, box-shadow .18s ease;
-    }
+    .sbtn{width:44px; height:44px; display:inline-grid; place-items:center; border-radius:12px; border:1px solid rgba(255,255,255,0.03); background:linear-gradient(180deg, rgba(255,255,255,0.01), transparent); color:var(--accent); font-weight:700; cursor:pointer; transition:transform .18s ease, box-shadow .18s ease;}
     .sbtn:hover{ transform:translateY(-4px); box-shadow:0 8px 24px rgba(230,75,75,0.06) }
+    .hire{padding:12px 22px; border-radius:20px; background:transparent; border:1.5px solid rgba(230,75,75,0.22); color:var(--accent); cursor:pointer; font-weight:700; font-family:"Poppins",sans-serif; transition: all .18s ease;}
+    .hire:hover{transform: translateY(-4px); box-shadow: 0 12px 30px rgba(230,75,75,0.06);}
 
-    .hire{
-      padding:12px 22px;
-      border-radius:20px;
-      background:transparent;
-      border:1.5px solid rgba(230,75,75,0.22);
-      color:var(--accent);
-      cursor:pointer;
-      font-weight:700;
-      font-family:"Poppins",sans-serif;
-      transition: all .18s ease;
-    }
-    .hire:hover{
-      transform: translateY(-4px);
-      box-shadow: 0 12px 30px rgba(230,75,75,0.06);
-    }
+    /* Clock */
+    .clock{position:absolute; right:18px; bottom:12px; background: rgba(0,0,0,0.7); border: 1px solid rgba(255,255,255,0.04); padding:8px 12px; border-radius:12px; font-weight:700; color:#fff; font-size:14px; z-index:4; box-shadow: 0 10px 30px rgba(0,0,0,0.6);}
 
-    /* bottom-right clock */
-    .clock{
-      position:absolute;
-      right:18px;
-      bottom:12px;
-      background: rgba(0,0,0,0.7);
-      border: 1px solid rgba(255,255,255,0.04);
-      padding:8px 12px;
-      border-radius:12px;
-      font-weight:700;
-      color:#fff;
-      font-size:14px;
-      z-index:4;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.6);
-    }
-
-    /* responsive */
+    /* Responsive */
     @media (max-width:1000px){
-      .card{ padding:28px; gap:22px; flex-direction:column; align-items:flex-start; max-width:920px}
-      .left{width:100%; justify-content:flex-start}
-      .portrait{width:280px; height:330px}
-      .moon{display:none}
+      .card{ padding:28px; gap:22px; flex-direction:column; align-items:center; max-width:920px;}
+      .left{width:100%; justify-content:center;}
       .nav{left:24px; right:24px}
     }
     @media (max-width:520px){
-      .portrait{width:220px; height:270px; border-radius:44% 56%}
+      .portrait{max-width:200px;}
+      .moon{max-width:200px;}
       .greeting{font-size:28px}
       .role{font-size:18px}
       .card{padding:18px}
@@ -395,11 +186,11 @@ nav ul li a {
 </head>
 <body>
 
-  <div class="card" role="main" aria-label="Profile card">
+  <div class="card">
     <!-- nav -->
-    <div class="nav" aria-hidden="true">
+    <div class="nav">
       <div class="brand">Rg_Dev</div>
-      <nav class="menu" aria-label="Main menu">
+      <nav class="menu">
         <a href="index.html" class="active">Home</a>
         <a href="services.html">Services</a>
         <a href="skills.html">Skills</a>
@@ -409,196 +200,69 @@ nav ul li a {
       </nav>
     </div>
 
-    <!-- decorative moon behind left -->
-    <div class="moon" aria-hidden="true"></div>
+    <!-- left column -->
+    <div class="left">
+      <div class="moon"></div>
+      <figure class="portrait">
+        <img src="Logo.jpg" alt="Rg_Dev Logo">
+      </figure>
+    </div>
 
-   <!-- left column: portrait -->
-<div class="left">
-    <figure class="portrait" aria-hidden="false">
-    </figure>
-  </div>
-  
-
-    <!-- right column: content -->
+    <!-- right column -->
     <div class="right">
       <div class="intro">
         <h1 class="greeting">Hi, It's <span class="name">Rg_Dev</span></h1>
-
         <div class="role">
           <span>I'm a</span>
-          <div class="typing" id="typing" aria-live="polite">
-            <span id="typed">Web Designer</span>
-            <span class="caret" aria-hidden="true"></span>
-          </div>
+          <div class="typing" id="typing"><span id="typed">Web Designer</span><span class="caret"></span></div>
         </div>
-
         <p class="desc">
-            "I’m passionate about creating modern, responsive, and user-friendly websites. I focus on clean design, strong functionality, and delivering solutions that help businesses and individuals stand out online. Every project I work on is built with attention to detail and a commitment to quality."
+          "I’m passionate about creating modern, responsive, and user-friendly websites. I focus on clean design, strong functionality, and delivering solutions that help businesses and individuals stand out online. Every project I work on is built with attention to detail and a commitment to quality."
         </p>
-
         <div class="controls">
-            <div class="socials" role="list" aria-label="Social links">
-          
-              <!-- LinkedIn -->
-              <a class="sbtn" href="https://www.linkedin.com/in/rg-dev-875a22382?utm_source=share&utm_campaign=share_via&utm_content=profile" title="LinkedIn" aria-label="LinkedIn">
-                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
-                  <path d="M19 0h-14c-2.76 0-5 2.24-5 5v14c0 
-                  2.76 2.24 5 5 5h14c2.76 0 5-2.24 
-                  5-5v-14c0-2.76-2.24-5-5-5zm-11.75 
-                  20h-3v-11h3v11zm-1.5-12.27c-.97 
-                  0-1.75-.79-1.75-1.76s.78-1.75 
-                  1.75-1.75 1.75.78 1.75 1.75-.78 
-                  1.76-1.75 1.76zm13.25 
-                  12.27h-3v-5.6c0-1.34-.03-3.06-1.87-3.06-1.87 
-                  0-2.16 1.46-2.16 2.96v5.7h-3v-11h2.88v1.5h.04c.4-.76 
-                  1.38-1.56 2.84-1.56 3.04 0 3.6 2 3.6 
-                  4.6v6.46z"/>
-                </svg>
-              </a>
-          
-              <!-- GitHub -->
-              <a class="sbtn" href="https://github.com/Godly-Dev" title="GitHub" aria-label="GitHub">
-                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
-                  <path d="M12 .5c-6.63 0-12 5.37-12 
-                  12 0 5.3 3.438 9.8 8.207 
-                  11.387.6.113.793-.26.793-.577 
-                  0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61-.546-1.387-1.333-1.756-1.333-1.756-1.09-.745.082-.73.082-.73 
-                  1.205.085 1.84 1.236 1.84 1.236 
-                  1.07 1.834 2.807 1.304 3.492.997.107-.776.418-1.304.76-1.605-2.665-.305-5.467-1.332-5.467-5.93 
-                  0-1.31.467-2.38 1.236-3.22-.124-.303-.536-1.523.117-3.176 
-                  0 0 1.008-.322 3.3 1.23.957-.266 
-                  1.983-.399 3.003-.404 1.02.005 
-                  2.047.138 3.006.404 2.29-1.552 
-                  3.296-1.23 3.296-1.23.655 1.653.243 
-                  2.873.12 3.176.77.84 1.234 1.91 
-                  1.234 3.22 0 4.61-2.807 5.624-5.48 
-                  5.922.43.37.823 1.102.823 2.222 
-                  0 1.606-.015 2.896-.015 3.286 
-                  0 .32.19.694.8.576 4.765-1.588 
-                  8.2-6.088 8.2-11.387 0-6.63-5.37-12-12-12z"/>
-                </svg>
-              </a>
-          
-              <!-- X (Twitter) -->
-              <a class="sbtn" href="https://x.com/Rg_DevOg" title="Twitter" aria-label="Twitter">
-                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
-                  <path d="M18.244 2.25h3.308l-7.227 8.26 
-                  8.502 11.24h-6.659l-5.216-6.817-5.961 
-                  6.817h-3.308l7.725-8.84-8.238-10.66h6.8l4.712 
-                  6.24 5.562-6.24zm-1.16 
-                  17.52h1.833l-11.775-15.69h-1.962l11.904 
-                  15.69z"/>
-                </svg>
-              </a>
-          
-              <!-- Instagram -->
-              <a class="sbtn" href="https://www.instagram.com/01000011_01101011_?igsh=MW54aDR0YXFjcjQzaQ==" title="Instagram" aria-label="Instagram" target: blank;>
-                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
-                  <path d="M12 2.163c3.204 0 3.584.012 
-                  4.85.07 1.366.062 2.633.35 
-                  3.608 1.325.975.975 1.262 
-                  2.242 1.324 3.608.058 1.266.07 
-                  1.646.07 4.85s-.012 3.584-.07 
-                  4.85c-.062 1.366-.35 2.633-1.324 
-                  3.608-.975.975-2.242 1.262-3.608 
-                  1.324-1.266.058-1.646.07-4.85.07s-3.584-.012-4.85-.07c-1.366-.062-2.633-.35-3.608-1.324-.975-.975-1.262-2.242-1.324-3.608-.058-1.266-.07-1.646-.07-4.85s.012-3.584.07-4.85c.062-1.366.35-2.633 
-                  1.324-3.608.975-.975 2.242-1.262 
-                  3.608-1.324 1.266-.058 1.646-.07 
-                  4.85-.07zm0-2.163c-3.259 
-                  0-3.667.012-4.947.072-1.675.077-3.173.363-4.37 
-                  1.56-1.197 1.197-1.483 2.695-1.56 
-                  4.37-.06 1.28-.072 1.688-.072 
-                  4.947s.012 3.667.072 4.947c.077 
-                  1.675.363 3.173 1.56 
-                  4.37 1.197 1.197 2.695 1.483 
-                  4.37 1.56 1.28.06 1.688.072 
-                  4.947.072s3.667-.012 4.947-.072c1.675-.077 
-                  3.173-.363 4.37-1.56 1.197-1.197 
-                  1.483-2.695 1.56-4.37.06-1.28.072-1.688.072-4.947s-.012-3.667-.072-4.947c-.077-1.675-.363-3.173-1.56-4.37-1.197-1.197-2.695-1.483-4.37-1.56-1.28-.06-1.688-.072-4.947-.072zm0 
-                  5.838a6.162 6.162 0 100 12.324 
-                  6.162 6.162 0 000-12.324zm0 
-                  10.162a3.999 3.999 0 110-7.998 
-                  3.999 3.999 0 010 7.998zm6.406-11.845a1.44 
-                  1.44 0 11-2.881 0 1.44 1.44 0 012.881 0z"/>
-                </svg>
-              </a>
-          
-            
-          
-              <button class="hire" id="hireBtn">Hire me</button>
-
-              <script>
-                document.getElementById("hireBtn").addEventListener("click", () => {
-                  window.location.href = "hireme.html"; 
-                });
-              </script>
+          <div class="socials">
+            <!-- Add your socials here -->
+          </div>
+          <button class="hire" id="hireBtn">Hire me</button>
         </div>
       </div>
     </div>
 
-    <div class="clock" id="clock" aria-hidden="false">00:00</div>
+    <div class="clock" id="clock">00:00</div>
   </div>
 
-  <script>
-    // ---------------------------
-    // Simple rotating typing effect
-    // ---------------------------
-    (function(){
-      const words = ["Web Designer","Web Developer"];
-      const typedEl = document.getElementById('typed');
-      const delay = 120; // typing speed (ms per char)
-      const pauseBetween = 1400; // pause between words
-      let wordIndex = 0, charIndex = 0, deleting = false;
-
-      function tick(){
-        const current = words[wordIndex];
-        if(!deleting){
-          typedEl.textContent = current.slice(0, ++charIndex);
-          if(charIndex === current.length){
-            deleting = true;
-            setTimeout(tick, pauseBetween);
-            return;
-          }
-        } else {
-          typedEl.textContent = current.slice(0, --charIndex);
-          if(charIndex === 0){
-            deleting = false;
-            wordIndex = (wordIndex + 1) % words.length;
-          }
-        }
-        setTimeout(tick, deleting ? delay/2 : delay);
+<script>
+  // Typing effect
+  (function(){
+    const words = ["Web Designer","Web Developer"];
+    const typedEl = document.getElementById('typed');
+    const delay = 120, pauseBetween = 1400;
+    let wordIndex = 0, charIndex = 0, deleting = false;
+    function tick(){
+      const current = words[wordIndex];
+      if(!deleting){
+        typedEl.textContent = current.slice(0, ++charIndex);
+        if(charIndex === current.length){deleting = true; return setTimeout(tick, pauseBetween);}
+      } else {
+        typedEl.textContent = current.slice(0, --charIndex);
+        if(charIndex === 0){deleting = false; wordIndex = (wordIndex+1)%words.length;}
       }
-      // start typing after tiny pause
-      setTimeout(tick, 600);
-    })();
+      setTimeout(tick, deleting ? delay/2 : delay);
+    }
+    setTimeout(tick, 600);
+  })();
 
-    // ---------------------------
-    // Live clock (bottom-right)
-    // ---------------------------
-    (function(){
-      const clock = document.getElementById('clock');
-      function updateClock(){
-        const now = new Date();
-        function pad(n){ return n.toString().padStart(2,'0') }
-        clock.textContent = pad(now.getHours()) + ":" + pad(now.getMinutes());
-      }
-      updateClock();
-      // update every 15 seconds so minutes are accurate within small window
-      setInterval(updateClock, 15000);
-    })();
-
-    // ---------------------------
-    // Small interactive bits
-    // ---------------------------
-    document.getElementById('hireBtn').addEventListener('click', function(){
-      // placeholder: change to your real action
-      alert("Thanks! Replace this alert with your contact / modal / link.");
-    });
-
-    // keyboard accessibility: allow nav links focusing and pressing Enter
-    document.querySelectorAll('.menu a').forEach(a=>{
-      a.setAttribute('tabindex','0');
-    });
-  </script>
+  // Clock
+  (function(){
+    const clock = document.getElementById('clock');
+    function updateClock(){
+      const now = new Date();
+      function pad(n){ return n.toString().padStart(2,'0') }
+      clock.textContent = pad(now.getHours()) + ":" + pad(now.getMinutes());
+    }
+    updateClock();
+    setInterval(updateClock, 15000);
+  })();
+</script>
 </body>
 </html>
